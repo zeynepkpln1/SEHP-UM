@@ -1,22 +1,41 @@
-# 🛋️ Sehpium - Modern & Şık Mobilya Mağazası
+NORDIC LIVING (SEHPIUM) PROJE NOTLARI
+=====================================
 
-Sehpium, özellikle modern sehpa tasarımları ve tamamlayıcı mobilya ürünleri sunan bir e-ticaret web projesidir. Kullanıcı dostu arayüzü ve estetik tasarımıyla mobilya alışverişini keyifli bir deneyime dönüştürmeyi hedefler.
+Modern mobilya (Sehpa ve Lambader) e-ticaret uygulaması.
 
-## ✨ Özellikler
-* **Geniş Ürün Yelpazesi:** Özel tasarım sehpalar ve modern mobilya grupları.
-* **Responsive Tasarım:** Hem bilgisayarlarda hem de mobil cihazlarda kusursuz görünüm.
-* **Kullanıcı Dostu Arayüz:** Ürünleri kolayca inceleyebileceğiniz temiz ve sade bir layout.
-* **Modern Teknolojiler:** Web standartlarına uygun, hızlı ve optimize edilmiş kod yapısı.
+ÖZELLİKLER
+----------
+* Şık Tasarım: Siyah ve Altın renkler, İskandinav tarzı.
+* Admin Paneli: Ürün ekleme/silme, görsel yükleme, stok takibi.
+* Vitrin Modu: Ana sayfada sadece marka tanıtımı.
+* Ürünler Sayfası: Tüm ürünlerin listelendiği ayrı sayfa.
+* Tek Giriş Ekranı: Hem müşteri hem yönetici aynı yerden giriş yapar.
 
-## 🛠️ Kullanılan Teknolojiler
-* **HTML5** - Yapısal düzenleme için.
-* **CSS3** - Görsel tasarım ve animasyonlar için.
-* **JavaScript** - Etkileşimli öğeler için.
-* *(Varsa ek teknolojilerin: React, Bootstrap vb. buraya ekleyebilirsin)*
+KURULUM VE ÇALIŞTIRMA
+---------------------
+1. Terminalde şu komutu çalıştırarak gerekli paketleri yükleyin:
+   npm install
 
-## 🚀 Kurulum
-Projeyi yerel bilgisayarınızda çalıştırmak için:
+2. Projeyi başlatmak için:
+   npm run dev
 
-1. Bu depoyu klonlayın:
-   ```bash
-   git clone [https://github.com/zeynepkpln1/SEHP-UM.git](https://github.com/zeynepkpln1/SEHP-UM.git)
+   Bu komut hem siteyi (localhost:5173) hem de sunucuyu (localhost:3001) başlatır.
+
+YÖNETİCİ (ADMIN) GİRİŞİ
+-----------------------
+Siteye ürün eklemek için giriş yap sayfasında şu bilgileri kullanın:
+
+E-posta: admin@nordicliving.com
+Şifre:   admin123
+
+(Giriş yapınca otomatik olarak Admin Paneline yönlendirilirsiniz.)
+
+GÖRSEL YÜKLEME
+--------------
+Resim yüklerken bilgisayarınızdan dosya seçebilir veya dosya yolunu (C:\...) kutucuğa yapıştırabilirsiniz; sistem otomatik düzeltir.
+
+TEKNOLOJİLER
+------------
+* React.js (Frontend)
+* Node.js & Express (Backend)
+* SQL Server (Veritabanı)
