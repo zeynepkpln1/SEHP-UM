@@ -1,38 +1,87 @@
-# Sehpium Project
+🛋️ Sehpium
 
-Bu proje, Nordic Living tarzı mobilya e-ticaret sitesi için geliştirilmiştir.
-Proje yapısı **MVC (Model-View-Controller)** mimarisine uygun olarak düzenlenmiştir.
+Sehpium, modern mobilya sektörüne odaklanan, özellikle sehpa ürünlerinin dijital ortamda sergilenmesini ve yönetilmesini amaçlayan; C# ve ASP.NET Core MVC mimarisiyle geliştirilmiş dinamik bir web projesidir.
 
-## Proje Yapısı
+🎯 Projenin Amacı
 
-- **Controllers/**: İş mantığını ve API endpoint yönetimini sağlar.
-- **Models/**: Veritabanı şemalarını ve veri erişim katmanını içerir.
-- **Views/**: Kullanıcı arayüzü (React) kodlarını içerir.
-- **server/**: Backend sunucu yapılandırması.
-- **appsettings.json**: Veritabanı ve sunucu ayarları.
+Bu projenin temel amacı;
+mobilya sektöründe yer alan sehpa ürünlerini dijital bir katalog haline getirmek, ürün bilgilerini merkezi ve güvenli bir veritabanında saklamak ve kullanıcılara modern, hızlı ve kullanıcı dostu bir alışveriş arayüzü sunmaktır.
 
-## Kurulum ve Çalıştırma
+👥 Hedef Kullanıcı Kitlesi
 
-1. Bağımlılıkları yükleyin:
-   ```bash
-   npm install
-   ```
+Müşteriler:
+Ev dekorasyonuna ilgi duyan, modern ve şık sehpa modellerini incelemek isteyen kullanıcılar.
 
-2. Geliştirme modunda çalıştırın (Frontend + Backend):
-   ```bash
-   npm run dev
-   ```
+Yöneticiler:
+Ürün envanterini dijital ortamda yönetmek, güncellemek ve kontrol etmek isteyen mağaza sorumluları.
 
-3. Veritabanı oluşturma:
-   Uygulama ilk çalıştığında `sehpium` veritabanını ve gerekli tabloları otomatik olarak oluşturur (MSSQL / SQLEXPRESS gerektirir).
+📜 Senaryo / Kullanım Amacı
 
-## Mimari Notlar
+Sistem üzerinde farklı kategorilere ait sehpa ürünleri listelenmektedir.
+Kullanıcılar, web arayüzü üzerinden güncel modelleri görüntüleyebilirken; arka planda tüm ürün bilgileri SQL Server üzerinde güvenli bir şekilde saklanmaktadır.
 
-- **Model**: Veritabanı işlemleri `mssql` ve `msnodesqlv8` kullanılarak modellenmiştir.
-- **View**: Frontend `Views` klasörü altında Vite + React ile geliştirilmiştir.
-- **Controller**: Express.js route logic'leri ayrı controller dosyalarına bölünmüştür.
+Yönetici paneli aracılığıyla:
 
-## Gereksinimler
+Ürün ekleme
 
-- Node.js
-- SQL Server Express (yerel bağlantı için)
+Ürün silme
+
+Ürün güncelleme
+
+işlemleri kolaylıkla gerçekleştirilebilmektedir.
+
+🛠️ Kullanılan Teknolojiler
+
+Programlama Dili: C#
+
+Framework: ASP.NET Core MVC
+
+Veritabanı: SQL Server Express
+(SQL Server Management Studio ile yönetilmektedir)
+
+Frontend:
+
+HTML5
+
+CSS3
+
+JavaScript
+
+React
+
+Bootstrap
+
+📂 Proje Yapısı
+
+Proje, katmanlı mimari prensiplerine uygun olarak aşağıdaki şekilde yapılandırılmıştır:
+
+Controllers/
+İş mantığını ve API endpoint yönetimini sağlar.
+
+Models/
+Veritabanı şemalarını ve veri erişim katmanını içerir.
+
+Views/
+Kullanıcı arayüzüne ait (React tabanlı) görsel bileşenleri barındırır.
+
+server/
+Backend sunucu yapılandırmalarını içerir.
+
+appsettings.json
+Veritabanı bağlantı dizeleri ve sunucu ayarlarını barındırır.
+
+🏗️ Yapılan Çalışmalar
+
+Veritabanı Entegrasyonu:
+SQL Server kullanılarak ilişkisel veritabanı yapısı oluşturulmuştur.
+
+Git Konfigürasyonu:
+Proje yerel Git ortamında başlatılmış ve versiyon kontrolü sağlanmıştır.
+
+GitHub Yayını:
+Tüm kod tabanı main dalı üzerinden GitHub’a başarıyla aktarılmıştır.
+
+👩‍💻 Geliştirici
+
+Zeynep Kaplan
+🔗 GitHub: github.com/zeynepkpln1
