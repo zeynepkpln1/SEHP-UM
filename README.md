@@ -28,3 +28,6 @@ Kullanıcılar web sitesi üzerinden sehpa modellerini inceler; veriler arka pla
 1. Bağımlılıkları yükleyin: `npm install`
 2. Projeyi çalıştırın: `npm run dev`
 3. Veritabanı: Uygulama çalıştığında `sehpium` veritabanını otomatik olarak oluşturur (MSSQL / SQLEXPRESS gerektirir).
+
+## Youtube Video Linkim
+https://youtu.be/8XrLm1Xy3Pg?si=3IXC3wH_uTlvHcrq
