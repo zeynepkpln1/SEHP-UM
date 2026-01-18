@@ -218,8 +218,13 @@ export function CartPage() {
                 })}
               </span>
             </div>
-            <button className="btn" type="button" style={{ width: '100%', justifyContent: 'center' }}>
-              Devam Et <span>↗</span>
+            <button
+              className="btn"
+              type="button"
+              style={{ width: '100%', justifyContent: 'center' }}
+              onClick={() => alert('Siparişiniz alındı! Teşekkür ederiz.')}
+            >
+              Satın Al <span>↗</span>
             </button>
             <button
               className="btn btn-secondary"

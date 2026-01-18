@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import type { FormEvent, ChangeEvent } from 'react'
+import { Link } from 'react-router-dom'
 import { useProducts } from '../../state/ProductsContext'
 import type { Product, Category } from '../../state/ProductsContext'
 import { useAuth } from '../../state/AuthContext'
@@ -118,13 +119,23 @@ export function AdminDashboardPage() {
           <div className="page-eyebrow" style={{ color: '#d4af37' }}>ADMIN PANEL</div>
           <h1 className="page-title">Ürün Yönetimi</h1>
         </div>
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={adminLogout}
-        >
-          Çıkış Yap
-        </button>
+        <div style={{ display: 'flex', gap: '0.8rem' }}>
+          <Link
+            to="/urunler"
+            target="_blank"
+            className="btn btn-secondary"
+            style={{ borderColor: '#444', color: '#ccc' }}
+          >
+            Sitede Gör <span>↗</span>
+          </Link>
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={adminLogout}
+          >
+            Çıkış Yap
+          </button>
+        </div>
       </div>
 
       <div className="grid grid-2">
@@ -152,7 +163,7 @@ export function AdminDashboardPage() {
               paddingBottom: '0.5rem'
             }}
           >
-            {editing ? 'Ürünü Güncelle' : 'Yeni Ürün Ekle'}
+            {editing ? 'ÜRÜNÜ GÜNCELLE & STOK DÜZENLE' : 'YENİ ÜRÜN & STOK GİRİŞİ'}
           </h2>
           <div>
             <label htmlFor="name" className="admin-label">Ürün Adı</label>
@@ -303,7 +314,7 @@ export function AdminDashboardPage() {
               color: '#d4af37'
             }}
           >
-            Ürün Listesi
+            TÜM ÜRÜNLER LİSTESİ
           </h2>
           <div style={{ maxHeight: 600, overflow: 'auto', paddingRight: '0.3rem' }}>
             {products.map(p => (

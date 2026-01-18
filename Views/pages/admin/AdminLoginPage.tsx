@@ -12,14 +12,14 @@ export function AdminLoginPage() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    const ok = await adminLogin(email, password)
+    const ok = await adminLogin(email.trim(), password)
     // adminLogin true döndürdüyse yönlendir, AuthContext admin state'ini biraz geç güncelleyebilir
     // bu yüzden directly yönlendirmeyi deneyebiliriz veya AuthContext'teki değişikliği bekleyebiliriz 
     // ama basitlik için ok kontrolü yeterli olmalıydı.
 
     if (ok) {
-      // Force navigation
-      navigate('/admin')
+      // Force hard navigation to ensure clean state
+      window.location.replace('/admin')
     } else {
       setError('Admin girişi başarısız. Örnek kullanıcı: admin@nordicliving.com / admin123')
     }

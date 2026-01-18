@@ -1,73 +1,38 @@
-# React + TypeScript + Vite
+# Sehpium Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bu proje, Nordic Living tarzı mobilya e-ticaret sitesi için geliştirilmiştir.
+Proje yapısı **MVC (Model-View-Controller)** mimarisine uygun olarak düzenlenmiştir.
 
-Currently, two official plugins are available:
+## Proje Yapısı
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Controllers/**: İş mantığını ve API endpoint yönetimini sağlar.
+- **Models/**: Veritabanı şemalarını ve veri erişim katmanını içerir.
+- **Views/**: Kullanıcı arayüzü (React) kodlarını içerir.
+- **server/**: Backend sunucu yapılandırması.
+- **appsettings.json**: Veritabanı ve sunucu ayarları.
 
-## React Compiler
+## Kurulum ve Çalıştırma
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Bağımlılıkları yükleyin:
+   ```bash
+   npm install
+   ```
 
-## Expanding the ESLint configuration
+2. Geliştirme modunda çalıştırın (Frontend + Backend):
+   ```bash
+   npm run dev
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3. Veritabanı oluşturma:
+   Uygulama ilk çalıştığında `sehpium` veritabanını ve gerekli tabloları otomatik olarak oluşturur (MSSQL / SQLEXPRESS gerektirir).
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Mimari Notlar
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Model**: Veritabanı işlemleri `mssql` ve `msnodesqlv8` kullanılarak modellenmiştir.
+- **View**: Frontend `Views` klasörü altında Vite + React ile geliştirilmiştir.
+- **Controller**: Express.js route logic'leri ayrı controller dosyalarına bölünmüştür.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Gereksinimler
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Node.js
+- SQL Server Express (yerel bağlantı için)

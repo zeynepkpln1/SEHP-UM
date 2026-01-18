@@ -1,9 +1,10 @@
-import { FormEvent, useState } from 'react'
+import { useState } from 'react'
+import type { FormEvent } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../state/AuthContext'
 
-export function RegisterPage() {
-  const { register } = useAuth()
+export function LoginPage() {
+  const { login, adminLogin } = useAuth()
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -11,28 +12,34 @@ export function RegisterPage() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    if (password.length < 6) {
-      setError('Şifreniz en az 6 karakter olmalı.')
-      return
+    const cleanEmail = email.trim()
+
+    // Check if it's admin credentials
+    const isAdmin = await adminLogin(cleanEmail, password)
+    if (isAdmin) {
+      window.location.replace('/admin') // Ensure hard redirect for admin too
+      return;
     }
-    const ok = await register(email, password)
-    if (!ok) {
-      setError('Lütfen geçerli bir e-posta ve şifre girin.')
-      return
+
+    // Try regular user login
+    const isUser = await login(cleanEmail, password)
+    if (isUser) {
+      navigate('/')
+    } else {
+      setError('Giriş başarısız. Bilgilerinizi kontrol edin.')
     }
-    navigate('/')
   }
 
   return (
     <div className="page">
       <div className="page-header">
         <div>
-          <div className="page-eyebrow">HESAP OLUŞTURUN</div>
-          <h1 className="page-title">NordicLiving’e Katılın</h1>
+          <div className="page-eyebrow">HESABINIZ</div>
+          <h1 className="page-title">Giriş Yapın</h1>
         </div>
         <p className="page-subtitle">
-          Ücretsiz üyeliğinizle koleksiyonlarımıza daha yakından bakabilir, sepetinizi kaydedebilir
-          ve kişiselleştirilmiş öneriler alabilirsiniz.
+          NordicLiving hesabınıza giriş yaparak favori ürünlerinizi saklayın ve sepetinizi tüm
+          cihazlarınızda senkron tutun.
         </p>
       </div>
 
@@ -86,13 +93,13 @@ export function RegisterPage() {
             <p style={{ color: '#b02a2a', fontSize: '0.85rem', margin: 0 }}>{error}</p>
           )}
           <button className="btn" type="submit" style={{ marginTop: '0.5rem', width: '100%' }}>
-            Üye Ol <span>↗</span>
+            Giriş Yap <span>↗</span>
           </button>
 
           <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-            Zaten hesabınız var mı?{' '}
-            <Link to="/giris" style={{ textDecoration: 'underline', textUnderlineOffset: 3 }}>
-              Giriş yapın
+            Henüz hesabınız yok mu?{' '}
+            <Link to="/uye-ol" style={{ textDecoration: 'underline', textUnderlineOffset: 3 }}>
+              Üye olun
             </Link>
             .
           </p>
@@ -108,12 +115,20 @@ export function RegisterPage() {
               textTransform: 'uppercase',
             }}
           >
-            NordicLiving Dünyası
+            Üyelik Avantajları
           </h2>
-          <p style={{ fontSize: '0.92rem', lineHeight: 1.8 }}>
-            Üyelikle birlikte; özel ön siparişlere erişim, kişiye özel stil önerileri ve sınırlı
-            koleksiyon lansman davetlerinden ilk siz haberdar olun.
-          </p>
+          <ul
+            style={{
+              margin: 0,
+              paddingLeft: '1.1rem',
+              fontSize: '0.92rem',
+              lineHeight: 1.9,
+            }}
+          >
+            <li>Favori sehpa ve lambader tasarımlarınızı kaydedin.</li>
+            <li>Sipariş geçmişinize tek ekrandan ulaşın.</li>
+            <li>Yeni koleksiyon ve kampanyalardan önce haberdar olun.</li>
+          </ul>
         </div>
       </div>
     </div>

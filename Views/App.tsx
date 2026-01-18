@@ -1,3 +1,4 @@
+import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import './App.css'
 import { NordicLayout } from './components/layout/NordicLayout'
@@ -15,15 +16,20 @@ import { AuthProvider, useAuth } from './state/AuthContext'
 import { CartProvider } from './state/CartContext'
 import { ProductsProvider } from './state/ProductsContext'
 
-function ProtectedRoute({ children }: { children: JSX.Element }) {
+function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user } = useAuth()
   if (!user) return <Navigate to="/giris" replace />
   return children
 }
 
-function AdminProtectedRoute({ children }: { children: JSX.Element }) {
+function AdminProtectedRoute({ children }: { children: React.ReactNode }) {
   const { admin } = useAuth()
-  if (!admin) return <Navigate to="/admin/giris" replace />
+
+  // Fallback: Check localStorage manually if state isn't updated yet
+  const storedAdmin = typeof window !== 'undefined' ? localStorage.getItem('nordic:admin') : null
+  const isAuthenticated = admin || storedAdmin
+
+  if (!isAuthenticated) return <Navigate to="/admin/giris" replace />
   return children
 }
 
